@@ -14,6 +14,7 @@ import { ProductCatalogReducer } from './store/reducers/product-catalog.reducer'
 import { ProductReducer } from './store/reducers/product.reducer';
 import { ShoppingCartReducer } from './store/reducers/shoppingcart.reducer';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ProductCatalogViewComponent,
     ProductViewComponent,
     ProductGridComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

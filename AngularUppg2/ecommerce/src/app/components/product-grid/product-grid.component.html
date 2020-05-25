@@ -1,32 +1,30 @@
 <div *ngFor="let product of productcatalog | async">
-
-        <div class="row row-cols-3 row-cols-md-3">
- <!-- Card -->
- <div class="card">
-    <!--Card image-->
-    <div class="view overlay">
-        <img class="card-img-top" [src]="product.image" [alt]="product.name">
-        
-    </div>
-
-    <!--Card content-->
-    <div class="card-body">
-        <!--Title-->
-        <h4 class="card-title">
-            <a [routerLink]="'/products/' + product.id" class="ml-4">{{ product.name }}</a>
-        </h4>
-        <!--Text-->
-        <p class="card-text">{{ product.description }}</p>
-
-        <button type="button" class="btn btn-light-blue btn-md" (click)="addToCart(product, 1)">Add To Cart</button>
-
-    </div>
-</div>
-<!-- Card -->
-
-
-        </div>
-       
+    <div >
+        <div class="col mb-4">
+          <!-- Card -->
+          <div class="card">
+      
+            <!--Card image-->
+            <div class="view overlay">
+                <img class="card-img-top" [src]="product.image" [alt]="product.name">
+                
+            </div>
+      
+            <!--Card content-->
+            <div class="card-body">
+      
+              <!--Title-->
+              <h4 class="card-title"><a [routerLink]="'/products/' + product.id">{{ product.name }}</a></h4>
+              <!--Text-->
+              <p class="card-text">{{ product.shortDescription }}</p>
     
-
+              <button type="button" class="btn btn-info btn-md" (click)="addToCart(product, 1)">Add To Cart</button>
+              
+            </div>
+      
+          </div>
+          <!-- Card -->
+        </div>
+    
+      </div>
 </div>
