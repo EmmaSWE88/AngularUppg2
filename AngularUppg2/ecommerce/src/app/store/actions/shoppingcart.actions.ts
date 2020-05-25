@@ -1,10 +1,10 @@
 import { Action } from '@ngrx/store'
 import { ActionTypes } from '../actiontypes'
-import { IShoppingCart } from 'src/app/models/ishoppingcart.model'
+import { IShoppingcart } from 'src/app/models/ishoppingcart.model'
 
 export class Add implements Action {
     public readonly type = ActionTypes.SHOPPINGCART_ADD
-    constructor(public payload: IShoppingCart) {}
+    constructor(public payload: IShoppingcart) {}
 }
 
 export class Remove implements Action {
@@ -12,4 +12,9 @@ export class Remove implements Action {
     constructor(public payload: string) {}
 }
 
-export type Actions = Add | Remove
+export class Clear implements Action {
+    public readonly type = ActionTypes.SHOPPINGCART_CLEAR
+    constructor() {}
+}
+
+export type Actions = Add | Remove | Clear

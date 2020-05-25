@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -13,8 +12,10 @@ import { ProductGridComponent } from './components/product-grid/product-grid.com
 import { ProductCatalogReducer } from './store/reducers/product-catalog.reducer';
 import { ProductReducer } from './store/reducers/product.reducer';
 import { ShoppingCartReducer } from './store/reducers/shoppingcart.reducer';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart/shoppingcart.component';
+import { CartItemComponent } from './components/shoppingcart/cart-item/cart-item.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,10 @@ import { FooterComponent } from './components/footer/footer.component';
     ProductCatalogViewComponent,
     ProductViewComponent,
     ProductGridComponent,
+    ShoppingcartComponent,
+    CartItemComponent,
+    FooterComponent,
     NavbarComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
