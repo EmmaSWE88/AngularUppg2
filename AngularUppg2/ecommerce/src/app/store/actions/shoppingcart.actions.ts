@@ -12,9 +12,25 @@ export class Remove implements Action {
     constructor(public payload: string) {}
 }
 
+export class Increment implements Action {
+    public readonly type = ActionTypes.SHOPPINGCART_INCREMENT
+    constructor(public payload: IShoppingcart) {}
+}
+export class Decrement implements Action {
+    public readonly type = ActionTypes.SHOPPINGCART_DECREMENT
+    constructor(public payload: IShoppingcart) {}
+}
+export class Total implements Action {
+    public readonly type = ActionTypes.SHOPPINGCART_TOTAL
+    constructor(public payload: number) {}
+}
+export class Amount implements Action {
+    public readonly type = ActionTypes.SHOPPINGCART_AMOUNT
+    constructor(public payload: number) {}
+}
 export class Clear implements Action {
     public readonly type = ActionTypes.SHOPPINGCART_CLEAR
     constructor() {}
 }
 
-export type Actions = Add | Remove | Clear
+export type Actions = Add | Remove | Clear | Increment | Decrement | Total | Amount

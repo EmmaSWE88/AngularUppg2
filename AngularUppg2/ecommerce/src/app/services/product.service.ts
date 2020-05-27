@@ -9,7 +9,7 @@ import * as demo from '../data/demo'
 })
 export class ProductService {
 
-  private _baseUrl: string = 'mongodb+srv://emma:bytmig123@cluster0-2pqwy.mongodb.net/webapidb?retryWrites=true&w=majority'
+  private _baseUrl: string  = 'https://localhost:9999/api/products'
   //private _baseUrl: string = 'https://johnsmilgatutorials.com/projects/react-tech-store-v2/products'
   constructor(private http: HttpClient, private store: Store) { }
 

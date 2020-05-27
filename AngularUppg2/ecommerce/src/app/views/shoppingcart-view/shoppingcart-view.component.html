@@ -1,0 +1,23 @@
+<div class="container my-5">
+    <div class="border border-dark rounded d-flex">
+        <div class="p-4">
+            <div class="mb-2">
+                
+                <h4 class=""><i class="fas fa-shopping-cart cart-icon fa-2x d-inline-flex"></i>Shopping Cart</h4>
+                <app-cart-item></app-cart-item>
+
+                <button class="btn btn-dark btn-sm">+</button> 
+                <button class="btn btn-dark btn-sm">-</button>
+                <!-- knapp med soptunna med clear cart function-->
+                <button type="button" class="btn btn-danger btn-sm" ><i class="far fa-trash-alt"></i></button>
+            </div>
+            <div class="justify-content-between">
+                <p>Total Amount:Total Amount</p>
+                <p>Total Quantity: Total Quantity</p>
+            </div>
+            <div class="mb-3">Din Kundvarng är tom.</div>
+            <a [routerLink]="'/products/'" class="btn btn-info">Products</a>
+            <button class="btn btn-success">Till Kassan</button>
+        </div>
+    </div>
+</div>

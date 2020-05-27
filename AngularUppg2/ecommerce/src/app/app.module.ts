@@ -16,6 +16,10 @@ import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart/sh
 import { CartItemComponent } from './components/shoppingcart/cart-item/cart-item.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LandingPageViewComponent } from './views/landing-page-view/landing-page-view.component';
+import { ShoppingcartViewComponent } from './views/shoppingcart-view/shoppingcart-view.component';
+import { ShoppingCartTotalReducer } from './store/reducers/shoppingcart-total';
+import { ShoppingCartAmountReducer } from './store/reducers/shoppingcart-amount';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CartItemComponent,
     FooterComponent,
     NavbarComponent,
+    LandingPageViewComponent,
+    ShoppingcartViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     StoreModule.forRoot({
       productcatalog: ProductCatalogReducer,
       product: ProductReducer,
-      shoppingcart: ShoppingCartReducer
+      shoppingcart: ShoppingCartReducer,
+      shoppingcartTotal: ShoppingCartTotalReducer,
+      shoppingcartAmount: ShoppingCartAmountReducer
     }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],

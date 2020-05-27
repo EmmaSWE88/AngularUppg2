@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IState } from 'src/app/models/istate.model';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<IState>) { }
+  public cartItemCount: number
 
   brand: string = 'ANGULAR Webstore'
   links = [
@@ -17,6 +20,8 @@ export class NavbarComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    this.store.select(store => store.shoppingcartTotal).subscribe(res => this.cartItemCount = res)
+    
   }
 
 }
