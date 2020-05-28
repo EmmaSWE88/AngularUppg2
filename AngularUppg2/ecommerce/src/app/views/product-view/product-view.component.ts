@@ -25,6 +25,8 @@ export class ProductViewComponent implements OnInit {
   
   addToCart(product, quantity = 1 ) {
     this.shoppingCartService.add(product, quantity)
+    console.log(quantity);
+    
   }
 
 }

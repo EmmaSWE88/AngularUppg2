@@ -8,9 +8,9 @@ import * as ShoppingCartActions from '../store/actions/shoppingcart.actions'
   providedIn: 'root'
 })
 export class ShoppingCartService {
- 
-  constructor(private store: Store<IState>) { }
   private cart
+  constructor(private store: Store<IState>) { }
+
    
   cartTotal(){
     this.store.select(store => store.shoppingcart).subscribe(res => this.cart = res)
@@ -18,7 +18,7 @@ export class ShoppingCartService {
     this.cart.forEach(item => {
       total += item.product.price * item.quantity
     })
-    this.store.dispatch(new ShoppingCartActions.Total(total))
+    this.store.dispatch(new ShoppingCartActions.Amount(total))
   }
 
   cartItemCount(){
@@ -27,12 +27,12 @@ export class ShoppingCartService {
     this.cart.forEach(item => {
       counter += item.quantity
     })
-    this.store.dispatch(new ShoppingCartActions.Amount(counter))
+    this.store.dispatch(new ShoppingCartActions.Total(counter))
   }
 
   add(product, quantity) {
     this.store.select(store => store.shoppingcart).subscribe(res => this.cart = res)
-    let exists = this.cart.find(p => {return p.product.id === product.id})
+    let exists = this.cart.find(item => {return item.product.id === product.id})
     if(!exists){
       this.store.dispatch(new ShoppingCartActions.Add({product, quantity}))
     } else {
@@ -43,15 +43,26 @@ export class ShoppingCartService {
   }
   remove(id) {
     this.store.dispatch(new ShoppingCartActions.Remove(id))
+    this.cartItemCount()
+    this.cartTotal()
   }
-  increment(product) {
-    this.store.dispatch(new ShoppingCartActions.Increment(product))
+  increment(item) {
+    this.store.dispatch(new ShoppingCartActions.Increment(item))
+    this.cartItemCount()
+    this.cartTotal()
+
   }
-  decrement(product) {
-    if(product.quantity <= 1) {
-      this.remove(product.product.id)
+  decrement(item) {
+    if(item.quantity <= 1) {
+      this.remove(item.product.id)
+      this.cartItemCount()
+      this.cartTotal()
+      return
+
     }else {
-      this.store.dispatch(new ShoppingCartActions.Decrement(product))
+      this.store.dispatch(new ShoppingCartActions.Decrement(item))
+      this.cartItemCount()
+      this.cartTotal()
     }
     }
    

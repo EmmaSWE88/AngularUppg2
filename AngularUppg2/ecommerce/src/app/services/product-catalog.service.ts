@@ -11,8 +11,8 @@ import { IProduct } from '../models/iproduct.model'
   providedIn: 'root'
 })
 export class ProductCatalogService {
-  private _baseUrl  = 'https://feu19-webapi.azurewebsites.net/api/products'
-  //private _baseUrl: string = 'http://localhost:9999/api/products/'
+  //private _baseUrl  = 'https://feu19-webapi.azurewebsites.net/api/products'
+  private _baseUrl: string = 'http://localhost:9999/api/products/'
   //private _baseUrl: string = 'https://johnsmilgatutorials.com/projects/react-tech-store-v2/products'
 
   constructor(private http: HttpClient, private store: Store) { }
@@ -27,8 +27,8 @@ export class ProductCatalogService {
     this.store.dispatch(new ProductCatalogActions.Clear())
   }
   getDemoData() {
-    //this.store.dispatch(new ProductCatalogActions.Set(demo.productCatalog))
+    this.store.dispatch(new ProductCatalogActions.Set(demo.productCatalog))
     //return this.http.get<IProduct>(`${this._baseUrl}/${id}`)
-    return this.http.get<IProduct>(`${this._baseUrl}`)
+    //return this.http.get<IProduct>(`${this._baseUrl}/${id}`)
   }
 }

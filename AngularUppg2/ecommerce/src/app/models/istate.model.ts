@@ -5,4 +5,5 @@ export interface IState {
     readonly product: IProduct
     readonly shoppingcart: Array<IProduct>
     readonly shoppingcartTotal: number
+    readonly shoppingcartAmount: number
 }
