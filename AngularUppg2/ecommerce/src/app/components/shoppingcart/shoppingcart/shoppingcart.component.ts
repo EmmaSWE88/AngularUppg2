@@ -3,7 +3,7 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IState } from 'src/app/models/istate.model';
-
+import { IShoppingcart } from 'src/app/models/ishoppingcart.model'
 
 @Component({
   selector: 'app-shoppingcart',

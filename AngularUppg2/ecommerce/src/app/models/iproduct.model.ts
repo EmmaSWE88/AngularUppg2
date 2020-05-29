@@ -4,10 +4,7 @@ export interface IProduct {
     shortDescription?: string
     description?: string
     image?: string
-    price?: Number
-    inStockAmount?: Number
+    price?: number
+    inStockAmount?: number
 }
 
-// export class Products extends IProduct {
-
-// }

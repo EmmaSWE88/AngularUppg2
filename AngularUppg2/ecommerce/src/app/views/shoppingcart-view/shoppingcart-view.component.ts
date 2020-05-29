@@ -3,7 +3,8 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service'
 import { IProduct } from 'src/app/models/iproduct.model';
 import { Store } from '@ngrx/store';
 import { IState } from 'src/app/models/istate.model';
-import { IShoppingcart } from 'src/app/models/ishoppingcart.model'
+// import { IShoppingcart } from 'src/app/models/ishoppingcart.model'
+// import * as ShoppingCartActions from 'src/app/store/actions/shoppingcart.actions'
 
 @Component({
   selector: 'app-shoppingcart-view',
@@ -22,20 +23,18 @@ export class ShoppingcartViewComponent implements OnInit {
     this.store.select(store => store.shoppingcart).subscribe(res => this.shoppingcart = res)
     this.store.select(store => store.shoppingcartTotal).subscribe(res => this.shoppingcartTotal = res)
     this.store.select(store => store.shoppingcartAmount).subscribe(res => this.shoppingcartAmount = res)
-    //this.shoppingcart = this.store.select(store => store.shoppingcart)
+ 
   }
-  removeFromCart(id) {
-    this.shoppingCartService.remove(id)
-    console.log(this);
-    
+  
+  decrementQuantity(item) {
+    this.shoppingCartService.decrement(item)
   }
-
-  incrementCartItem(item){
+  incrementQuantity(item) {
     this.shoppingCartService.increment(item)
   }
 
-  decrementCartItem(item) {
-    this.shoppingCartService.decrement(item)
+  deleteFromCart(id) {
+    this.shoppingCartService.remove(id)
   }
  
 }

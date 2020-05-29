@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IState } from '../models/istate.model'
 import { Store } from '@ngrx/store'
 import * as ShoppingCartActions from '../store/actions/shoppingcart.actions'
+import { IShoppingcart } from '../models/ishoppingcart.model';
 
 
 @Injectable({
@@ -46,21 +47,21 @@ export class ShoppingCartService {
     this.cartItemCount()
     this.cartTotal()
   }
-  increment(item) {
-    this.store.dispatch(new ShoppingCartActions.Increment(item))
+  increment(shoppingCart) {
+    this.store.dispatch(new ShoppingCartActions.Increment(shoppingCart))
     this.cartItemCount()
     this.cartTotal()
 
   }
-  decrement(item) {
-    if(item.quantity <= 1) {
-      this.remove(item.product.id)
+  decrement(shoppingCart) {
+    if(shoppingCart.quantity <= 1) {
+      this.remove(shoppingCart.product.id)
       this.cartItemCount()
       this.cartTotal()
       return
 
     }else {
-      this.store.dispatch(new ShoppingCartActions.Decrement(item))
+      this.store.dispatch(new ShoppingCartActions.Decrement(shoppingCart))
       this.cartItemCount()
       this.cartTotal()
     }
