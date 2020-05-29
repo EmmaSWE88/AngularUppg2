@@ -1,52 +1,50 @@
-<div class="containter mt-3">
-    <h4>Shopping Cart</h4>
-    <div id="productcatalog">
-        <div id="list">
-            <div class="list-group">
-                <!-- <div class="list-group" *ngIf="(shoppingcartTotal > 0 | async); else noItems"> -->
-                <div class="cart-item list-group-item list-group-item-action" *ngFor="let product of shoppingcart" (product)="product">
-                    <div class="p-2 d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                            <img [src]="product.product.image" [alt]="product.product.name" class="img-fluid img-thumbnail">
-                            <div>
-                                <div><strong>{{product.product.name}}</strong></div>
-                                <div><small>{{product.quantity}} x {{product.product.price }} USD </small></div>
+<div class="containter mt-3 d-flex justify-content-center">
+   
+    <div class="">
+        <div><h4 class="text-center">Shopping Cart</h4></div>
+        <div id="productcatalog" class="card-body border-black">
+            <div id="list">
+                <div class="list-group">
+                    <div class="list-group"> 
+                    <div class="" *ngFor="let product of shoppingcart" (product)="product">
+                        <div class="p-2 d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <div><img [src]="product.product.image" [alt]="product.product.name" class="img-fluid"></div>
+                                <div>
+                                    <div><strong>{{product.product.name}}</strong></div>
+                                    <div><small>{{product.quantity}} x {{product.product.price }} USD </small></div>
+                                    <button type="button" class="btn btn-grey px-3" (click)="decrementQuantity(product)">-</button>
+                                    <button type="button" class="btn btn-grey px-3" (click)="incrementQuantity(product)">+</button>
+                                    <button class="btn btn-danger px-3"> <i class="fas fa-trash"></i> </button>
+                                </div>
                             </div>
-                       
-                        </div>
-                        <div>
-                            <div class="btn-group btn-group-sm" role="group" aria-lable="quantity">
-                                <button type="button" class="btn btn-grey px-3" (click)="decrementQuantity(product)">-</button>
-                                <button type="button" class="btn btn-grey px-3" (click)="incrementQuantity(product)">+</button>
-                               
-                            </div>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="trash">
-                                <button class="btn btn-danger px-3" (click)="deleteFromCart(id)"> <i class="fas fa-trash"></i> </button>
-                            </div>
-                        </div>
-                
-                    </div>
-                </div> 
-                <div>
-                    <div class="justify-content-between">
-                        <p>Total Amount: {{ shoppingcartAmount }} $</p>
-                        <p>Total Quantity: {{ shoppingcartTotal }} </p>
                         
-                    </div>
-                    <div>
+                        </div>
+                    </div> 
+                  
+                </div> <!--End list-group-->
+            </div> <!--End list-->
+            <div *ngIf="shoppingcartTotal > 0; else emptyCart">
+                <div>
+                    <div class="d-flex justify-content-center">
+                        <h5>Total Amount: {{ shoppingcartAmount }} $</h5>
+                       <div>
                         <a [routerLink]="'/products/'" class="btn btn-info">Products</a>
-                        <button class="btn btn-success">Till Kassan</button>
-                    </div>
+                        <button class="btn btn-success">Till Kassan</button>   
+                       </div>
+                    </div>   
                 </div>
-            </div> <!--End list-group-->
-        </div> <!--End list-->
+            </div>
+            <ng-template #emptyCart>
+               <div class="container">
+                <div><h4>Kundvagen är tom.</h4></div>
+                <a [routerLink]="'/products/'" class="btn btn-success">Till produktkatalogen</a>
+               </div>
+            </ng-template>
+        </div>
+        
+       </div>
+  
 
-        <ng-template #noItems>
-            <p>Kundvagen är tom.</p>
-            <a [routerLink]="'/products/'" class="btn btn-info">Products</a>
-        </ng-template>
-    </div>
     
-
-
 </div>
