@@ -9,7 +9,9 @@ export class Add implements Action {
 
 export class Remove implements Action {
     public readonly type = ActionTypes.SHOPPINGCART_REMOVE
+    //constructor() {}
     constructor(public payload: string) {}
+    //constructor(public payload: IShoppingcart) {}
 }
 
 export class Increment implements Action {

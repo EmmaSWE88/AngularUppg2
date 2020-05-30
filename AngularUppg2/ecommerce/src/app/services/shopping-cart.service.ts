@@ -3,6 +3,7 @@ import { IState } from '../models/istate.model'
 import { Store } from '@ngrx/store'
 import * as ShoppingCartActions from '../store/actions/shoppingcart.actions'
 import { IShoppingcart } from '../models/ishoppingcart.model';
+import { IProduct } from '../models/iproduct.model'
 
 
 @Injectable({
@@ -46,6 +47,7 @@ export class ShoppingCartService {
     this.store.dispatch(new ShoppingCartActions.Remove(id))
     this.cartItemCount()
     this.cartTotal()
+    return
   }
   increment(shoppingCart) {
     this.store.dispatch(new ShoppingCartActions.Increment(shoppingCart))
